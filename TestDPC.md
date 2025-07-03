@@ -22,7 +22,7 @@ emu64xa:/ #
     1. `pm list users`
     2. `am get-current-user`
 ```
-C:\User\AppData\Local\Android\Sdk\platform-tools>.\adb.exe shell
+C:\Users\User\AppData\Local\Android\Sdk\platform-tools>.\adb.exe shell
 emu64xa:/ $ pm list users
 Users:
         UserInfo{0:Owner:4c13} running
@@ -31,7 +31,7 @@ emu64xa:/ $ am get-current-user
 0
 emu64xa:/ $ exit
 
-C:\Users\BlueT\AppData\Local\Android\Sdk\platform-tools>.\adb.exe shell
+C:\Users\User\AppData\Local\Android\Sdk\platform-tools>.\adb.exe shell
 emu64xa:/ $ am get-current user
 Unknown command: get-current
 255|emu64xa:/ $ am get-current-user
@@ -56,3 +56,7 @@ emu64xa:/ $ pm create-user WorkUser01
 Success: created user id 10
 emu64xa:/ $ am switch-user 10
 C:\User\User\AppData\Local\Android\Sdk\platform-tools>.\adb.exe install "C:\Users\User\Downloads\TestDPC_9.0.12.apk"
+```
+
+![image](https://github.com/user-attachments/assets/bf36f951-10e0-4ba3-84c6-e1fd84cf1942)
+
