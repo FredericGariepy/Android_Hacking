@@ -38,3 +38,21 @@ Unknown command: get-current
 11
 emu64xa:/ $
 ```
+
+----
+
+fuck the above instead. 
+
+## 1. get TestDPC, insall TestDPC on Primary User, create user, switch user, install TestDPC on secondary user
+https://github.com/googlesamples/android-testdpc/releases
+
+```cmd
+C:\User\User\AppData\Local\Android\Sdk\platform-tools>.\adb.exe install "C:\Users\User\Downloads\TestDPC_9.0.12.apk"
+Performing Streamed Install
+Success
+
+C:\Users\User\AppData\Local\Android\Sdk\platform-tools>.\adb.exe shell
+emu64xa:/ $ pm create-user WorkUser01
+Success: created user id 10
+emu64xa:/ $ am switch-user 10
+C:\User\User\AppData\Local\Android\Sdk\platform-tools>.\adb.exe install "C:\Users\User\Downloads\TestDPC_9.0.12.apk"
