@@ -1,58 +1,51 @@
-Frida server
+# Frida Setup and Usage Tutorial for Android Emulator
 
-
+### Find adb location
+```cmd
 C:\>dir adb.exe /s /p
- Volume in drive C has no label.
- Volume Serial Number is B034-1DE5
-
- Directory of C:\Users\BlueT\AppData\Local\Android\Sdk\platform-tools
-
-11/25/2024  01:49 AM         5,969,000 adb.exe
-               1 File(s)      5,969,000 bytes
-
-C:\>cd C:\Users\BlueT\AppData\Local\Android\Sdk\platform-tools
-
-C:\Users\BlueT\AppData\Local\Android\Sdk\platform-tools>.\adb.exe devices
+```
+### check for AVD 
+```cmd
+C:\your path to \Android\Sdk\platform-tools>.\adb.exe devices
 List of devices attached
 emulator-5554   device
+```
+### Verify Device Architecture
+```cmd
+adb shell getprop ro.product.cpu.abi
+x86_64 <- for my AVD
+```
 
+### Get frida-server
+device architecture: **x86\_64**. Use frida-server for **android-x86\_64**
 
-C:\Users\BlueT\AppData\Local\Android\Sdk\platform-tools>adb shell getprop ro.product.cpu.abi
-x86_64
-
-C:\Users\BlueT\AppData\Local\Android\Sdk\platform-tools>
-
-
-Your device architecture: **x86\_64**. Use frida-core-devkit for **android-x86\_64**.
-
-Go to https://github.com/frida/frida/releases
-Get frida-server-17.2.11-android-x86_64.xz 
-
+Go to https://github.com/frida/frida/releases \
+Get frida-server-17.2.11-android-x86_64.xz \
 unzip
 
+### Push Frida Server to Device
+```cmd
 .\adb.exe push C:\Users\BlueT\Downloads\fridaserver\frida-server-17.2.11-android-x86_64 /data/local/tmp/frida-server
-
 C:\Users\BlueT\Downloads\fridaserver\frida-server...0 skipped. 224.8 MB/s (110700632 bytes in 0.470s)
-
+```
+### Setup Frida Server on Device
+```cmd
 C:\Users\BlueT\AppData\Local\Android\Sdk\platform-tools>.\adb.exe shell
 emu64xa:/ $ ls -l /data/local/tmp/frida-server
 -rw-rw-rw- 1 shell shell 110700632 2025-07-14 21:29 /data/local/tmp/frida-server
-
+```
+Grant Root with Majisk on AVD and run frida
+```cmd
 1|emu64xa:/ $ su
-
-Grant Root with Majisk on AVD
-
 emu64xa:/ # chmod 755 /data/local/tmp/frida-server
-
 emu64xa:/ # /data/local/tmp/frida-server &
 [1] 15516
-
 emu64xa:/ # ps | grep frida
 root         15516 15479   10937912   2400 do_sys_poll         0 S frida-server
+```
 
-
-ON SEPERATE TERMINAL
-
+## ON SEPERATE TERMINAL
+```cmd
 C:\Users\BlueT>dir C:\*frida.exe /s /p
  Volume in drive C has no label.
  Volume Serial Number is B034-1DE5
@@ -104,4 +97,4 @@ C:\Users\BlueT\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n
    . . . .   Connected to Android Emulator 5554 (id=emulator-5554)
 
 [Android Emulator 5554::PID::20837 ]->
-
+```
