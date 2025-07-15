@@ -98,3 +98,8 @@ C:\Users\BlueT\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n
 
 [Android Emulator 5554::PID::20837 ]->
 ```
+
+
+# Next Steps
+- Use frida-trace or write scripts to hook functions in the target app
+- Reverse engineer .apk to identify functions to hook
